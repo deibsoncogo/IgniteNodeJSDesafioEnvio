@@ -1,6 +1,6 @@
 const request = require("supertest");
-const { validate } = require("uuid");
-const app = require("..");
+const { validate, v4 } = require("uuid");
+const { app } = require("..");
 
 describe("Todos", () => {
   it("should be able to list all user's todo", async () => {
@@ -104,7 +104,7 @@ describe("Todos", () => {
     const todoDate = new Date();
 
     const response = await request(app)
-      .put("/todos/invalid-todo-id")
+      .put(`/todos/${v4()}`)
       .send({
         title: "update title",
         deadline: todoDate,
@@ -152,7 +152,7 @@ describe("Todos", () => {
       });
 
     const response = await request(app)
-      .patch("/todos/invalid-todo-id/done")
+      .patch(`/todos/${v4()}/done`)
       .set("username", userResponse.body.username)
       .expect(404);
 
@@ -198,7 +198,7 @@ describe("Todos", () => {
       });
 
     const response = await request(app)
-      .delete("/todos/invalid-todo-id")
+      .delete(`/todos/${v4()}`)
       .set("username", userResponse.body.username)
       .expect(404);
 
