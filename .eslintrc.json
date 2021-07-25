@@ -14,8 +14,8 @@
     "eslint-plugin-import-helpers"
   ],
   "rules": {
+    "no-plusplus": "off",
     "no-undef": "off",
-    "no-unused-vars": "off",
     "max-len": ["error", { "code": 106 }], // tamanho máximo da linha
     "linebreak-style": "off", // tipo de enter
     "no-console": "off", // console
