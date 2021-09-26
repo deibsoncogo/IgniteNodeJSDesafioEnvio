@@ -1,0 +1,56 @@
+{
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "eslint-plugin-import-helpers"
+  ],
+  "rules": {
+    "camelcase": "off",
+    "class-methods-use-this": "off",
+    "import/prefer-default-export": "off",
+    //"max-len": ["error", {"code": 103, "ignoreComments": true, "ignoreUrls": true, "ignorePattern": "^import\\s.+\\sfrom\\s.+;$" }], // tamanho máximo da linha
+    "linebreak-style": "off", // tipo de enter
+    "no-console": "off", // console
+    "quotes": ["error", "double"], // obriga a usar aspas duplas
+    "object-curly-newline": ["error", { "multiline": true, "minProperties": 15 }], // quebra de importações
+    "import-helpers/order-imports": [ // ordena importações
+      "warn", {
+        "groups": [
+          ["/react/", "/next/", "/express/", "/typeorm/"],
+          "module",
+          ["parent", "sibling", "index"], ["/style/", "/css/"]
+        ],
+        "newlinesBetween": "never",
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ],
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": [
+      "error"
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never"
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
+}
